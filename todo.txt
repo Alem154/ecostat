@@ -1,0 +1,15 @@
+- Nom des fonctions en francais.
+- Chaque fonction doit contenir une doc string et des commentaires si besoin ( """ docstring """ // commentaires)
+- Snake_case ou camelCase
+- Branche main décomposer en une branche pour le front et une pour le back décomposer en deux de sorte a que chaque utilisateur est une branche
+- Pas de merge de branche sans validations globale 
+- Bien sur pas d'IA
+
+
+
+TO DO /////////
+Globale :
+
+Front :
+
+Back :
