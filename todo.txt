@@ -1,7 +1,7 @@
 - Nom des fonctions en francais.
 - Chaque fonction doit contenir une doc string et des commentaires si besoin ( """ docstring """ // commentaires)
 - Snake_case ou camelCase
-- Branche main décomposer en une branche pour le front et une pour le back décomposer en deux de sorte a que chaque utilisateur est une branche
+- Branche main décomposer en une branche pour le front et une pour le back décomposer en deux de sorte a que chaque utilisateur ai une branche
 - Pas de merge de branche sans validations globale 
 - Bien sur pas d'IA
 - Commit régulier et nom du commit efficace et lisible
@@ -13,3 +13,14 @@ Globale :
 Front :
 
 Back :
+système de connexion et de compte 
+CRUD 
+
+questionnaire energetique sur ces habitudes
+- un questionnaire sur les dépenses domiciles
+- un questionnaire sur les dépenses de déplacement. 
+
+reponse en fin de questionnaire en fonction des habitude => donner des conseils 
+
+système de graphe dans la page du compte sur le long terme en fonction des reponses des questionnaires 
+
