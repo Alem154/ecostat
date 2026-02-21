@@ -1,8 +1,10 @@
 body{
-   background-image: url("../HTML/ressources/d7fb59f24f7dcbdd0c838ce355e27d53\ 1.png");
+   background-image: url("../HTML/ressources/fond.png");
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
-#header{                         /*temporaire*/
+#header_dv{                         /*temporaire*/
    background-color: grey;
    border-radius: 50px;
    opacity: 70%;
@@ -11,7 +13,19 @@ body{
    justify-content: space-between;
 }
 
+#footer_dv{
+   background-color: black;
+   opacity: 70%;
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   position: fixed;
+   bottom: 0%;
+}
+
 .titre{
+   font-family:'Times New Roman', Times, serif;
    margin: 2em;
    text-decoration: none;
    color: white;
