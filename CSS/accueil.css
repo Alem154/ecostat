@@ -5,14 +5,24 @@
    border-radius: 8px;
    padding: 3%;
    display: flex;
-   background-color: black;
+   background-color: rgb(126, 120, 120);
    
    color: white;
 }
 
+.icone{
+   height: 1em;
+   margin-bottom: 8%;
+}
+
+.icone img{
+   width: 10%;
+   height: auto;
+}
+
 #lastB{
    width: 100%;
-   text-align: center;
+   padding: 20%;
 }
 
 #listeBoutons{
