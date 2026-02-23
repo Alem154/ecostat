@@ -1,0 +1,21 @@
+.boutons{
+   text-align: center;
+   width: 40%;
+   margin: 2%;
+   border-radius: 8px;
+   padding: 3%;
+   display: flex;
+   background-color: black;
+   
+   color: white;
+}
+
+#lastB{
+   width: 100%;
+   text-align: center;
+}
+
+#listeBoutons{
+   display:flex;
+   flex-flow: row wrap;
+}
