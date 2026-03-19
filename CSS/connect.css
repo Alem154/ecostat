@@ -1,0 +1,22 @@
+.Tconnect{
+   text-align: center;
+   margin-top: 1em;
+}
+
+#Bconnect{
+   
+   font-size: 3em;
+   font-family:Arial, Helvetica, sans-serif;
+   border-width: 0.1em;
+   border-style: groove;
+   font-family: 'Times New Roman', Times, serif;
+
+   background-color: rgb(63, 197, 135);
+}
+
+.champs{
+   width: 80%;
+   background-color: rgb(126, 120, 120);
+   font-weight: bolder;
+   color: white;
+}

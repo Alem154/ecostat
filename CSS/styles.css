@@ -1,0 +1,71 @@
+body{
+   background-image: url("../HTML/ressources/fond.png");
+   background-repeat: repeat;
+   background-size: cover;
+   background-color: rgb(54, 53, 53)
+}
+
+#header_dv{                         /*temporaire*/
+   background-color: grey;
+   border-radius: 50px;
+   opacity: 70%;
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   position: sticky;
+   top: 0%;
+   width: 100%;
+   height: 6em;
+}
+
+#footer_dv{
+   margin-top: 50em;
+   background-color: black;
+   opacity: 70%;
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   position: fixed;
+   bottom: 0%;
+   height: 4em;
+}
+
+.titre{
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   text-align: center;
+   opacity: 100%;
+}
+
+.titre_header{
+   font-family:'Times New Roman', Times, serif;
+   margin: 1em;
+   text-decoration: none;
+   color: white;
+}
+.bloc{
+   opacity: 70%;
+   width: 50%;
+   border-radius: 10px;
+   background-color: white;
+   padding: 1em;
+   margin-left: 25%;
+   margin-top: 5em;
+   margin-bottom: 15em;
+}
+
+.centrer{
+   display: flex;
+   margin-top: 1em;
+   justify-content: center;
+   align-items: center;
+}
+
+a{
+   text-decoration: none;
+   color: white;
+}
+
+.hyprnoir{
+   color: black;
+}
