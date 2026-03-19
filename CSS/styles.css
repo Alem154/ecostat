@@ -1,14 +1,13 @@
 body{
-   background-image: url("../html/ressources/fond.png");
    background-repeat: repeat;
    background-size: cover;
-   background-color: rgb(54, 53, 53)
+   background-color: rgb(245, 240, 215);
 }
 
 #header_dv{                         /*temporaire*/
-   background-color: grey;
+   background-color: #49CCC3;
    border-radius: 50px;
-   opacity: 70%;
+   opacity: 80%;
    text-align: center;
    display: flex;
    justify-content: space-between;
