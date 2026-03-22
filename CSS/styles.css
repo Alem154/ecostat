@@ -1,4 +1,11 @@
+html {
+   height: 100%;
+}
+
 body{
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
    background-repeat: repeat;
    background-size: cover;
    background-color: rgb(245, 240, 215);
@@ -20,19 +27,13 @@ body{
 }
 
 #footer_dv{
-   /*margin-top: 50em; */
+   margin-top: auto;
    background-color: black;
    opacity: 70%;
    text-align: center;
    display: flex;
    justify-content: space-around;
    width: 100%;
-   /*position: fixed;
-   bottom: 0%;
-   height: 4em;
-   margin-left: -8px;*/
-   position: relative;
-   bottom: 0%;
 }
 
 .titre{
