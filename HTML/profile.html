@@ -2,17 +2,51 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Ecostat</title>
-
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Profil - Ecostat</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/footer_header/header.js" defer></script>
     <script src="../js/footer_header/footer.js" defer></script>
+    <script src="../js/pages/profile.js" defer></script>
 
 </head>
 <body>
    <div id="header_dv"></div>
    <div class="bloc">
       <h2 class="titre">Votre Profil</h2>
+      <div id="dv_prof">
+         <p><strong>Pseudo :</strong> <span id="pseudo">Chargement...</span></p>
+         <p><strong>Email :</strong> <span id="email">Chargement...</span></p>
+         
+         <a href="/mael/php/page/logout.php" onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');" id="l_deco">
+            Déconnexion
+         </a>
+      </div>
+
+      <h3 class="titre" style="margin-top: 40px;">Changer votre mot de passe</h3>
+      <div id="dv_p_mdp">
+         <form id="passwordForm">
+            <div style="margin-bottom: 15px;">
+               <label for="oldPassword"><strong>Ancien mot de passe :</strong></label><br>
+               <input type="password" id="old_mdp" name="oldPassword" required>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+               <label for="newPassword"><strong>Nouveau mot de passe :</strong></label><br>
+               <input type="password" id="new_mdp" name="newPassword" required>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+               <label for="confirmPassword"><strong>Confirmer le nouveau mot de passe :</strong></label><br>
+               <input type="password" id="confirm_mdp" name="confirmPassword" required>
+            </div>
+            
+            <div id="mdp_mess"></div>
+            
+            <button type="submit" id="b_n_mdp">
+               Changer le mot de passe
+            </button>
+         </form>
+      </div>
    </div>
    <div id="footer_dv"></div>
 </body>

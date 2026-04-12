@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleFormButton.addEventListener("click", () => {
         if (loginForm.style.display === "none") {
-            // Afficher le formulaire de connexion
+            // Form de connexion
             loginForm.style.display = "block";
             signupForm.style.display = "none";
             formTitle.textContent = "Connexion";
             toggleFormButton.textContent = "Créer un compte";
         } else {
-            // Afficher le formulaire de création de compte
+            // Form de créa de compte
             loginForm.style.display = "none";
             signupForm.style.display = "block";
             formTitle.textContent = "Créer un compte";
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Gérer les icônes d'affichage/masquage du mot de passe
+    // Icone d'affichage et de masquage de mdp
     const toggleEyeButtons = document.getElementsByClassName("toggleEye");
     for (let eye of toggleEyeButtons) {
         eye.addEventListener("click", function() {

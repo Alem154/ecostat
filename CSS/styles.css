@@ -76,3 +76,56 @@ a{
 .hyprnoir{
    color: black;
 }
+
+#dv_prof{
+   background: white; 
+   padding: 20px;
+   border-radius: 8px;
+   max-width: 500px;
+   margin: 20px auto;
+}
+
+#l_deco{
+   display: inline-block;
+   margin-top: 20px;
+   padding: 10px 20px;
+   background: #d32f2f; 
+   color: white;
+   text-decoration: none;
+   border-radius: 4px;
+}
+
+#dv_p_mdp{
+   background: white;
+   padding: 20px;
+   border-radius: 8px;
+   max-width: 500px;
+   margin: 20px auto;
+}
+
+#old_mdp,
+#new_mdp,
+#confirm_mdp
+{
+   width: 100%; 
+   padding: 8px;
+   border: 1px solid white;
+   border-radius: 4px;
+   box-sizing: border-box;
+}
+
+#mdp_mess{
+   margin-bottom: 15px;
+   padding: 10px;
+   border-radius: 4px;
+   display: none;
+}
+
+#b_n_mdp{
+   padding: 10px 20px;
+   background: #4CAF50;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}

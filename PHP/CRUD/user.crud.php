@@ -67,4 +67,14 @@ function connect(mysqli $conn, string $login, string $mdp): array {
     return $res;
 }
 
+function getUserById($conn, $id){
+    $query = "SELECT `id`, `pseudo`, `email` FROM `utilisateurs` WHERE `id`=$id";
+    $ret = mysqli_query($conn, $query);
+    
+    if($ret && mysqli_num_rows($ret) > 0){
+        return mysqli_fetch_assoc($ret);
+    }
+    return null;
+}
+
 ?>
