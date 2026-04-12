@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
     const signupForm = document.getElementById("signupForm");
     const toggleFormButton = document.getElementById("toggleFormButton");
-    const formTitle = document.querySelector("h1");
+    const formTitle = document.querySelector(".formTitle");
+
+    if (!toggleFormButton) {
+        console.error("toggleFormButton not found");
+        return;
+    }
 
     toggleFormButton.addEventListener("click", () => {
         if (loginForm.style.display === "none") {
@@ -19,17 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleFormButton.textContent = "Déjà un compte"; 
         }
     });
-});
 
-const toggleEye = document.getElementsByClassName("toggleEye");
-const passwordInput = document.getElementById("passwordInput");
-
-toggleEye.addEventListener("click", () => {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleEye.src = "./css/img/show.png"
-    } else {
-        passwordInput.type = "password";
-        toggleEye.src = "./css/img/hide.png"
+    // Gérer les icônes d'affichage/masquage du mot de passe
+    const toggleEyeButtons = document.getElementsByClassName("toggleEye");
+    for (let eye of toggleEyeButtons) {
+        eye.addEventListener("click", function() {
+            const input = this.parentElement.querySelector("input[type='password'], input[type='text']");
+            if (input) {
+                if (input.type === "password") {
+                    input.type = "text";
+                    this.src = "../css/img/show.png";
+                } else {
+                    input.type = "password";
+                    this.src = "../css/img/hide.png";
+                }
+            }
+        });
     }
 });
