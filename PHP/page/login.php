@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once __DIR__."../db/db_connect.php";
-require_once __DIR__."../CRUD/user.crud.php";
+require_once __DIR__."/../db/db_connect.php";
+require_once __DIR__."/../CRUD/user.crud.php";
 
 //Connexion
 if(isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])){
@@ -18,7 +18,7 @@ if(isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])){
 
 
 //Inscription
-if(isset($_POST["usernameSignup"]) && isset($_POST["passswordSignup"]) && isset($_POST["emailSignup"])){
+if(isset($_POST["usernameSignup"]) && isset($_POST["passwordSignup"]) && isset($_POST["emailSignup"])){
     createUser($conn, $_POST["usernameSignup"], $_POST["emailSignup"], $_POST["passwordSignup"]);
     $t = connect($conn, $_POST["usernameSignup"], $_POST["passwordSignup"]);
     if($t["correct"]){
