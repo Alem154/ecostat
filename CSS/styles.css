@@ -1,34 +1,39 @@
-body{
-   background-image: url("../HTML/ressources/fond.png");
-   background-repeat: repeat;
-   background-size: cover;
-   background-color: rgb(54, 53, 53)
+html {
+   height: 100%;
 }
 
+body{
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+   background-repeat: repeat;
+   background-size: cover;
+   background-color: rgb(245, 240, 215);
+   margin: 0;
+} 
+
 #header_dv{                         /*temporaire*/
-   background-color: grey;
+   background-color: #49CCC3;
    border-radius: 50px;
-   opacity: 70%;
+   opacity: 80%;
    text-align: center;
    display: flex;
    justify-content: space-between;
-   position: sticky;
+   /*position: sticky;*/
    top: 0%;
-   width: 100%;
+   /*width: 100%;*/
    height: 6em;
+   margin: 8px;
 }
 
 #footer_dv{
-   margin-top: 50em;
+   margin-top: auto;
    background-color: black;
    opacity: 70%;
    text-align: center;
    display: flex;
-   justify-content: space-between;
+   justify-content: space-around;
    width: 100%;
-   position: fixed;
-   bottom: 0%;
-   height: 4em;
 }
 
 .titre{
@@ -51,7 +56,9 @@ body{
    padding: 1em;
    margin-left: 25%;
    margin-top: 5em;
-   margin-bottom: 15em;
+   margin-bottom: 3em;
+   display: flex;
+   flex-direction: column;
 }
 
 .centrer{

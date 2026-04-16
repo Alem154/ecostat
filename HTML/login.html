@@ -5,17 +5,56 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Se connecter</title>
 
-   <link rel="stylesheet" href="../CSS/styles.css">
-   <link rel="stylesheet" href="../CSS/connect.css">
+   <link rel="stylesheet" href="../css/styles.css">
+   <link rel="stylesheet" href="../css/login.css">
 
    <script src="../js/footer_header/header.js" defer></script>
    <script src="../js/footer_header/footer.js" defer></script>
-   <script src="../js/pages/login.js"></script>
+   <script src="../js/pages/login.js" defer></script>
    
 </head>
 <body>
     <div id="header_dv"></div>
-    <div class="bloc">
+
+    <div id="loginContainer">
+    <div id="loginBox">
+        <h1>Connexion</h1>
+        <form id="loginForm" method="post" action="./login">
+            <div class="input" id="identifiant">
+                <img src="../css/img/user_01.png" class="icone" alt="user">
+                <input type="identifiant" placeholder="Identifiant" name="usernameLogin">
+            </div>
+            <div class="input" id="password">
+                <img src="../css/img/lock.png" class="icone" alt="lock">
+                <input type="password" placeholder="Mot de passe" name="passwordLogin" class="password">
+                <img src="../css/img/hide.png" class="toggleEye" alt="hide">
+            </div>
+            <input type="submit" value="Connexion" class="submitButton">
+        </form>
+
+        <form id="signupForm" method="post" action="./login" style="display: none;">
+            <div class="input" id="identifiant">
+                <img src="../css/img/user_01.png" class="icone" alt="user">
+                <input type="text" placeholder="Identifiant" name="usernameSignup">
+            </div>
+            <div class="input" id="email">
+                <img src="../css/img/at.png" class="icone" alt="email">
+                <input type="email" placeholder="Email" name="emailSignup">
+            </div>
+            <div class="input" id="password">
+                <img src="../css/img/lock.png" class="icone" alt="lock">
+                <input type="password" placeholder="Mot de passe" name="passwordSignup" class="password">
+                <img src="../css/img/hide.png" class="toggleEye" alt="hide">
+            </div>
+            <input type="submit" value="Créer un compte" class="submitButton">
+        </form>
+
+        <button id="toggleFormButton" class="minimalButton toggle_button">Créer un compte</button>
+    </div>
+</div>
+
+
+    <!-- <div class="bloc"> 
       <h2 class = "Tconnect">Se connecter</h2>
       <h3>Identifiant / adresse E-mail:</h3>
       <div class="centrer">
@@ -27,11 +66,11 @@
       </div>
       <br>
          <div class="Tconnect">
-            <input id="Bconnect" type="button" value="Valider" onclick="validerMDP()"> <!-- a compléter -->
+            <input id="Bconnect" type="button" value="Valider" onclick="validerMDP()"> --><!-- a compléter --><!--
             <br>
-            <a class="hyprnoir" href="">Mot de passe oublié ?</a>   <!--jsp si c'est sur le cahier des charges-->
-         </div>
-    </div>
+            <a class="hyprnoir" href="">Mot de passe oublié ?</a> -->   <!--jsp si c'est sur le cahier des charges-->
+        <!-- </div>
+    </div> -->
     <div id="footer_dv"></div>
 </body>
 </html>
