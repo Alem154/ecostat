@@ -10,7 +10,7 @@ function createData($conn, $id_user, $transport, $alimentaire, $logement){
 }
 
 function updateData($conn, $id, $transport, $alimentaire, $logement){
-    $sql = "UPDATE `donnee_crabone` SET `transport`='$transport', `alimentaire`='$alimentaire', `logement`='$logement' WHERE `id`=$id";
+    $sql = "UPDATE `donnee_carbone` SET `transport`='$transport', `alimentaire`='$alimentaire', `logement`='$logement' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
     if(!$ret){
         return "Error: " . mysqli_error($conn);

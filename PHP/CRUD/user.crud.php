@@ -23,7 +23,7 @@ function deleteUser($conn, $id){
     $sql = "DELETE FROM `utilisateurs` WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
     if($ret){
-        return mysqli_fetch_assoc($ret);
+        return true;
     } else {
         return "Error: " . mysqli_error($conn);
     }

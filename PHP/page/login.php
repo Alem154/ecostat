@@ -37,9 +37,11 @@ if(isset($_POST["usernameSignup"]) && isset($_POST["passwordSignup"]) && isset($
     $pseudoExists = mysqli_num_rows($checkPseudoRet) > 0;
     
     if($emailExists){
-        echo "<script>alert('Cette adresse email existe déjà');</script>";
+        header("Location: /mael/html/login.html?error=email");
+        exit();
     } else if($pseudoExists){
-        echo "<script>alert('Ce pseudo existe déjà');</script>";
+        header("Location: /mael/html/login.html?error=pseudo");
+        exit();
     } else {
         createUser($conn, $usernameSignup, $emailSignup, $_POST["passwordSignup"]);
         $t = connect($conn, $usernameSignup, $_POST["passwordSignup"]);
@@ -48,7 +50,8 @@ if(isset($_POST["usernameSignup"]) && isset($_POST["passwordSignup"]) && isset($
             header("Location: /mael/html/profile.html");
             exit();
         }else{
-            echo "<script>alert('La création du compte a échoué');</script>";
+            header("Location: /mael/html/login.html?error=creation");
+            exit();
         }
     }
 }
