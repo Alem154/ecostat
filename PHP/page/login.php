@@ -12,12 +12,17 @@ if(isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])){
         header("Location: /mael/html/profile.html");
         exit();
     }else{
-        echo "<script>alert('Ientifiant ou mot de passe incorrect');</script>";
+        header("Location: /mael/html/login.html?error=identifiants");
+        exit();
     }
 }
 
 //Inscription
 if(isset($_POST["usernameSignup"]) && isset($_POST["passwordSignup"]) && isset($_POST["emailSignup"])){
+    if(empty(trim($_POST["usernameSignup"])) || empty(trim($_POST["passwordSignup"])) || empty(trim($_POST["emailSignup"]))){
+        header("Location: /mael/html/login.html?error=champsVides");
+        exit();
+    }
     $usernameSignup = $_POST["usernameSignup"];
     $emailSignup = $_POST["emailSignup"];
     

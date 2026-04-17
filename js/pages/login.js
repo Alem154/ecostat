@@ -1,14 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const param = new URLSearchParams(window.location.search);
+    const error = param.get("error");
+    if(error){
+        const messages = {
+            identifiants: "Identifiant ou mot de passe incorrect",
+            email: "Cette adresse email existe déjà",
+            pseudo: "Ce pseudo existe déjà",
+            creation: "La création du compte a échoué",
+            champsVides: "Veuillez remplir tous les champs"
+        };
+        const texte = messages[error] || "une erreur est survenu";
+        if(error === "identifiants"){
+            document.getElementById("loginError").textContent = texte;
+        }else{
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("signupForm").style.display = "block";
+            document.getElementById("signupError").textContent = texte;
+        }
+    }
+
     const loginForm = document.getElementById("loginForm");
     const signupForm = document.getElementById("signupForm");
     const toggleFormButton = document.getElementById("toggleFormButton");
     const formTitle = document.querySelector(".formTitle");
 
     if (!toggleFormButton) {
-        console.error("toggleFormButton not found");
+        console.error("toggleFormButton error");
         return;
     }
-
+    
     toggleFormButton.addEventListener("click", () => {
         if (loginForm.style.display === "none") {
             // Form de connexion
