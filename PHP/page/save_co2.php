@@ -21,4 +21,16 @@ if($id_user <= 0){
     exit;
 }
 
+if($_SESSION["user"] != $id_user){
+    echo json_encode(["success" => false, "error" => "Accès refusé"]);
+    exit;
+}
+
+$result = createData($conn, $id_user, $transport, $alimentaire, $logement);
+
+if($result === true || $result){
+    echo json_encode(["success" => true]);
+} else{
+    echo json_encode(["success" => false, "error" => $result]);
+}
 ?>
