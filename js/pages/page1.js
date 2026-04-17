@@ -86,3 +86,122 @@ function updateUI(){
         return '<span class="bd_pill">' + b.icon + ' ' + b.label+ '<strong>'+ b.val.toLocaleString('fr-FR') + ' kg</strong></span>';
     }).join('');
 }
+
+function updateProgress(){
+    var fields = ['logType','chauffage','transport','vols_long','regime','local','gaspillage','digital'];
+    var selects = ['conso_elec', 'vols_court'];
+    var count = 0;
+    fields.forEach(function(f) { if (document.querySelector('[name="'+f+'"]:checked')) count++;});
+    selects.forEach(function(id) { var el = document.getElementById(id); if(el && el.value) count++;});
+    count += 2;
+    count = Math.min(count, 12);
+    var pct = Math.round(count / 12 * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = count + ' / 12 réponses';
+}
+
+function toggleKm(){
+    var transp = document.querySelector('[name="transport"]:checked');
+    var qKm = document.getElementById('q_km');
+    qKm.style.display = (transp && transp.value !== 'velo') ? 'block' : 'none';
+}
+
+function updateTileGroups(){
+    document.querySelectorAll('.tile_group').forEach(function(grp){
+        grp.querySelectorAll('label').forEach(function(lbl){
+            var inp = lbl.querySelector('input');
+            if(inp) lbl.classList.toggle('selected', inp.checked);
+        });
+    });
+}
+
+function initRange(id, valId, fmt){
+    var inp = document.getElementById(id);
+    var val = document.getElementById(valId);
+    function refresh(){
+        val.textContent = fmt(inp.value);
+        var pct = (inp.value - inp.min) / (inp.max - inp.min) * 100;
+        inp.style.setProperty('--pct', pct + '%'); // cf prblm
+    }
+    inp.addEventListener('input', function(){refresh();updateUI();updateProgress();});
+    refresh();
+}
+
+function shwoToast(msg, duration){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show');}, duration || 3500);
+}
+
+function getPrefix(){
+    var path = window.location.pathname;
+    var parts = path.split('/').filter(Boolean);
+    var depth = Math.max(0, parts.length -1);
+    var prefix = '';
+    for(var i = 0; i < depth; i++) prefix+='../';
+    return prefix;
+}
+
+async function submitResults(){
+    var r = calcCO2();
+    var p = getPrefix();
+    var authData = { connected: false };
+    try{
+        var authRes = await fetch(p + 'php/page/check_auth.php');
+        authData =await authRes.json();
+    } catch(e) {}
+
+    var msp = document.getElementById('submitMsg');
+    msg.style.display = 'block';
+
+    if(authData.connected){
+        try {
+            var body = new URLSearchParams({
+                id_user: authData.id,
+                transport: r.transport,
+                alimentaire: r.alim,
+                logement: r.logement
+            });
+            var res = await fetch(p + 'php/page/save_co2.php', { method: 'POST', body: body });
+            var data = await res.json();
+            if(data.success){
+                shwoToast('Données enregistrées sur votre compte.');
+                msg.style.color = 'green';
+                msg.textContent = 'Résultat enregistré : '+ r.total.toLocaleString('fr-FR') + ' kg CO2/an ajouté à votre profil.';
+            } else{
+                shwoToast('Erreur lors de l\'enregistrement.');
+                msg.style.color = 'red';
+                msg.textContent = 'Erreur lors de l\'enregistrement. Veuillez réessayer.';
+            }
+        }catch(e){
+            shwoToast('Impossible de contacter le serveur');
+            msg.style.color = 'red';
+            msg.textContent = 'Impossible de contacter le serveur.';
+        }
+    } else{
+        shwoToast('Votre empreinte : ' + r.total.toLocaleString('fr-FR') + ' kg CO2/an');
+        msg.style.color = 'muted';
+        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<a href="' + p + 'html/login.html" style="color:green;font-weight:700;">Connectez-vous</a>' + ' pour sauvegrader vos résultats sur votre profil.';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    initRange('nbPersonnes','nbPersonnesVal', function(v){returnv;});
+    initRange('kmSemaine', 'kmSemaineVal', function(v){return v + ' km';});
+
+    document.querySelectorAll('input[type="radio"], select').forEach(function(el){
+        el.addEventListener('change', function(){
+            toggleKm();
+            updateTileGroups();
+            updateUI();
+            updateProgress();
+        });
+    });
+
+    document.getElementById('btnSubmit').addEventListener('click', submitResults);
+
+    updateUI;
+    updateProgress();
+    toggleKm();
+})
