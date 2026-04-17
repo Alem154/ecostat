@@ -124,3 +124,10 @@ input[type="checkbox"] {
    background-color: rgb(126, 120, 120);
    color: white;
 }
+
+.errorMessage {
+   color: red;
+   font-size: 1rem;
+   margin: 6px;
+   min-height: 1em;
+}

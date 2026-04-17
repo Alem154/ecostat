@@ -18,21 +18,22 @@
 
     <div id="loginContainer">
     <div id="loginBox">
-        <h1>Connexion</h1>
-        <form id="loginForm" method="post" action="./login">
+        <h1 class="formTitle">Connexion</h1>
+        <form id="loginForm" method="post" action="/mael/php/page/login.php">
             <div class="input" id="identifiant">
                 <img src="../css/img/user_01.png" class="icone" alt="user">
-                <input type="identifiant" placeholder="Identifiant" name="usernameLogin">
+                <input type="text" placeholder="Identifiant" name="usernameLogin">
             </div>
             <div class="input" id="password">
                 <img src="../css/img/lock.png" class="icone" alt="lock">
                 <input type="password" placeholder="Mot de passe" name="passwordLogin" class="password">
                 <img src="../css/img/hide.png" class="toggleEye" alt="hide">
             </div>
+            <p class="errorMessage" id="loginError"></p>
             <input type="submit" value="Connexion" class="submitButton">
         </form>
 
-        <form id="signupForm" method="post" action="./login" style="display: none;">
+        <form id="signupForm" method="post" action="/mael/php/page/login.php" style="display: none;">
             <div class="input" id="identifiant">
                 <img src="../css/img/user_01.png" class="icone" alt="user">
                 <input type="text" placeholder="Identifiant" name="usernameSignup">
@@ -46,6 +47,7 @@
                 <input type="password" placeholder="Mot de passe" name="passwordSignup" class="password">
                 <img src="../css/img/hide.png" class="toggleEye" alt="hide">
             </div>
+            <p class="errorMessage" id="signupError"></p>
             <input type="submit" value="Créer un compte" class="submitButton">
         </form>
 
