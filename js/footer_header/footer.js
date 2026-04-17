@@ -9,8 +9,8 @@ function footer_page(){
     const div_fo = document.getElementById("footer_dv");
     if(!div_fo)return;
     const p = getRelativePrefix();
-    let ft= `<a href="mael/${p}html/apropos.html"><h3 class="titre_header"> A propos</h3></a>`; // mettre votre nom au lieu du mieux (mael) si aucun lien en marche
-    ft += `<a href="mael/${p}html/contact.html"><h3 class="titre_header">Nous contacter</h3></a>`;
+    let ft= `<a href="mael/${p}ecostat/HTML/apropos.html"><h3 class="titre_header"> A propos</h3></a>`; // mettre votre nom au lieu du mieux (mael) si aucun lien en marche
+    ft += `<a href="mael/${p}ecostat/HTML/contact.html"><h3 class="titre_header">Nous contacter</h3></a>`;
     div_fo.innerHTML = ft;
 }
 
