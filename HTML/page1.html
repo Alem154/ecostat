@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <title>Ecostat</title>
@@ -7,11 +8,169 @@
     <script src="../js/footer_header/header.js" defer></script>
     <script src="../js/footer_header/footer.js" defer></script>
 </head>
+
 <body>
     <div id="header_dv"></div>
-    <div class="bloc">
-        <h2 class="titre">Page 1</h2>
+
+    <div class="co2_wrapper">
+        <div class="co2_hero">
+            <h1>Mon empreinte CO2</h1>
+            <p>Répondez au questions pour estimer votre production annuelle de CO2.</p>
+        </div>
+
+        <div class="progress_bar_wrap">
+            <div class="progress_bar_fill" id="progressFill"></div>
+        </div>
+        <div class="progress_label" id="progressLabel">0 / 12 réponses</div>
+
+        <div class="result_panel">
+            <h3>Votre empreinte estimé</h3>
+            <div class="result_main">
+                <span class="result_co2" id="rTotal">0</span>
+                <span class="result_unit">kg CO2 / an</span>
+            </div>
+            <div class="result_bar_bg">
+                <div class="result_bar_fg" id="rBar"></div>
+            </div>
+            <div class="result_compare" id="rCompare">Commencez le questionnaire ci-dessous</div>
+            <div class="result_breakdown" id="rBreakdown"></div>
+        </div>
+
+        <div class="section_card">
+            <h2>Logement</h2>
+
+            <div class="question">
+                <label>Type de logement</label>
+                <div class="tile_group" id="tg_logType">
+                    <label><input type="radio" name="logType" value="appart_recent"><span
+                            class="tile_icon">🏢</span>Appart. récent</label>
+                    <label><input type="radio" name="logType" value="appart_ancien"><span
+                            class="tile_icon">🏗️</span>Appart. ancien</label>
+                    <label><input type="radio" name="logType" value="maison_recent"><span
+                            class="tile_icon">🏡</span>Maison récente</label>
+                    <label><input type="radio" name="logType" value="maison_ancienne"><span
+                            class="tile_icon">🏚️</span>Maison ancienne</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Mode de chauffage principal</label>
+                <div class="tile_group" id="tg_chauffage">
+                    <label><input type="radio" name="chauffage" value="gaz"><span class="tile_icone"></span>Gaz</label>
+                    <label><input type="radio" name="chauffage" value="electricite"><span
+                            class="tile_icone"></span>Electricité</label>
+                    <label><input type="radio" name="chauffage" value="fioul"><span
+                            class="tile_icone"></span>Fioul</label>
+                    <label><input type="radio" name="chauffage" value="bois"><span
+                            class="tile_icone"></span>Bois</label>
+                    <label><input type="radio" name="chauffage" value="pompe"><span class="tile_icone"></span>Pompe à
+                        chaleur</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Consommation électrique annuelle <span class="hint">(estimée)</span></label>
+                <select name="conso_elec" id="conso_elec">
+                    <option value="">-- Choisir --</option>
+                    <option value="2000">Moins de 2 000 kWh (très économe)</option>
+                    <option value="4000">2 000 - 4 500 kWh (dans la moyenne)</option>
+                    <option value="7000">4 500 - 9 000 kWh (élevée)</option>
+                    <option value="12000">Plus de 9 000 kWh (très élevée)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section_card">
+            <h2>Transport</h2>
+
+            <div class="question">
+                <label>Mpde de transport principal au quotidien</label>
+                <div class="tile_group" id="tg_transport">
+                    <label><input type="radio" name="transport" value="voiture_essencec">Voiture essence</label>
+                    <label><input type="radio" name="transport" value="voiture_diesel">Voiture diesel</label>
+                    <label><input type="radio" name="transport" value="voiture_electrique">Voiture électrique</label>
+                    <label><input type="radio" name="transport" value="transport_commun">Transport en commun</label>
+                    <label><input type="radio" name="transport" value="velo">Vélo / marche</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Vols long-courriers par an <span class="hint">(+5h)</span></label>
+                <div class="tile_group" id="tg_vols_long">
+                    <label><input type="radio" name="vols_long" value="0">Aucun</label>
+                    <label><input type="radio" name="vols_long" value="1">1</label>
+                    <label><input type="radio" name="vols_long" value="2">2 - 3</label>
+                    <label><input type="radio" name="vols_long" value="4">4 ou plus</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Vols court/moyen-courriers par an <span class="hint">(-5h)</span></label>
+                <select name="vols_court" id="vols_court">
+                    <option value="">-- Choisir --</option>
+                    <option value="0">Aucun</option>
+                    <option value="1">1 - 2</option>
+                    <option value="3">3 - 5</option>
+                    <option value="7">6 ou plus</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section_card">
+            <h2>Alimentation</h2>
+
+            <div class="question">
+                <label>Régime alimentaire</label>
+                <div class="tile_group" id="tg_regime">
+                    <label><input type="radio" name="regime" value="vegan">Vegan</label>
+                    <label><input type="radio" name="regime" value="vegetarien">Végétarien</label>
+                    <label><input type="radio" name="regime" value="flexitarien">Flexitarien</label>
+                    <label><input type="radio" name="regime" value="omnivore">Omnivore</label>
+                    <label><input type="radio" name="regime" value="carnivore">Carnivore</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Part d'aliments locaux / bio</label>
+                <div class="tile_group" id="tg_local">
+                    <label><input type="radio" name="local" value="fort">Majorité local & bio</label>
+                    <label><input type="radio" name="local" value="moyen">Mix classique</label>
+                    <label><input type="radio" name="local" value="faible">Peu local</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Gaspillage alimentaire</label>
+                <div class="tile_group" id="tg_gaspillage">
+                    <label><input type="radio" name="gaspillage" value="faible">Très peu</label>
+                    <label><input type="radio" name="gaspillage" value="moyen">Modéré</label>
+                    <label><input type="radio" name="gaspillage" value="fort">Important</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section_card">
+            <h2>Numérique</h2>
+            <div class="question">
+                <label>Appareils numériques achetés neufs ces 12 derniers mois</label>
+                <div class="tile_group" id="tg_digital">
+                    <label><input type="radio" name="digital" value="0">Aucun</label>
+                    <label><input type="radio" name="digital" value="1">1 - 2</label>
+                    <label><input type="radio" name="digital" value="3">3 - 5</label>
+                    <label><input type="radio" name="digital" value="6">6 ou plus</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit_wrap">
+            <button class="btn_submit" id="btnSubmit" type="button">
+                Enregistrer mes résultats
+            </button>
+            <p id="submitMsg"></p>
+        </div>
     </div>
+
     <div id="footer_dv"></div>
 </body>
+
 </html>

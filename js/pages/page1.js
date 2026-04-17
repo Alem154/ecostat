@@ -1,0 +1,88 @@
+const FACTORS = {
+    logement: { appart_recent: 800, appart_ancien: 1600, maison_recente: 1400, maison_ancienne: 2800 },
+    chauffage: { gaz: 2000, electricite: 400, fioul: 3500, bois: 300, pompe: 200 },
+    conso_elec: (kwh) => kwh * 0.057,
+    transport: { voiture_essence: 3200, voiture_diesel: 2900, voiture_electrique: 800, transport_commun: 200, velo: 0 },
+    km_factor: { voiture_essence: 0.21, voiture_diesel: 0.19, voiture_electrique: 0.045, transport_commun: 0.08, velo: 0},
+    vols_long: (n) => n * 3500,
+    vols_court: (n) => n * 400,
+    regime: { vegan: 1000, vegetarien: 1500, flexitarien: 2000, omnivore: 2700, carnivore: 3600 },
+    local: { fort: -200, moyen: 0, faible: 300 },
+    gaspillage: { faible: 0, moyen: 150, fort: 350 },
+    digital: (n) => n * 300,
+};
+
+function getRadio(name){
+    const el = document.querySelector('[name="'+ name +'"]:checked');
+    return el ? el.value : null;
+}
+
+function getSel(id){
+    const el = document.getElementById(id);
+    return el && el.value ? el.value : null;
+}
+
+function calcCO2(){
+    let logement = 0;
+    let transport = 0;
+    let alim = 0;
+
+    var logType = getRadio('logType');
+    var chauffage = getRadio('chauffage');
+    var nbPers = parseInt(document.getElementById('nbPersonne').value) || 2;
+    var consoElec = getSel('conso_elec');
+    
+    if(logType) logement += FACTORS.logement[logType] || 0;
+    if(chauffage) logement += FACTORS.chauffage[chauffage] || 0;
+    if(consoElec) logement += FACTORS.conso_elec(parseFloat(consoElec));
+    logement = logement / nbPers;
+
+    var transp = getRadio('transport');
+    var kmSem = parseInt(document.getElementById('kmSemaine').value) || 0;
+    var volsLong = getRadio('vols_long');
+    var volsCourt = getSel('vols_court');
+
+    if(transp){
+        transport += (FACTORS.transport[transp] || 0) + (FACTORS.km_factor[transp] || 0) * kmSem * 52;
+    }
+    if(volsLong !== null) transport += FACTORS.vols_long(parseFloat(volsLong));
+    if(volsCourt !== null) transport += FACTORS.vols_court(parseFloat(volsCourt));
+
+    var regime = getRadio('regime');
+    var local = getRadio('local');
+    var gaspillage = getRadio('gaspillage');
+
+    if(regime) alim += FACTORS.regime[regime] || 0;
+    if(local) alim += FACTORS.local[local] || 0;
+    if(gaspillage) alim += FACTORS.gaspillage[gaspillage] || 0;
+
+    var digital = getRadio('digital');
+    var num = digital ? FACTORS.digital(parseFloat(digital)) : 0;
+
+    var total = Math.round(logement + transport + alim + num);
+    return { total: total, logement: Math.round(logement), transport: Math.round(transport), alim: Math.round(alim), num: Math.round(num)};
+}
+
+function updateUI(){
+    var r = calcCO2();
+    var MAX = 20000;
+    document.getElementById('rTotal').textContent = r.total.toLocaleString('fr-FR');
+
+    var compare = '';
+    if(r.total < 4000) compare = 'Bien en dessous de la moyenne francaise (~10 t/an)';
+    else if(r.total < 7000) compare = 'En dessous de la moyenne francaise (~10 t/an)';
+    else if(r.total < 10000) compare = 'Dans la moyenne francaise (~10 t/an)';
+    else if(r.total < 15000) compare = 'Au-dessus de la moyenne francaise (~10 t/an)';
+    else compare = 'Très au-dessus de la moyenne francaise (~10 t/an)';
+    document.getElementById('rCompare').textContent = compare;
+// a completer
+    var pills = [
+        { icon:'', label:'Logement', val: r.logement},
+        { icon:'', label:'Transport', val: r.transport},
+        { icon:'', label:'Alimentation', val: r.alim},
+        {icon:'', label:'Numérique', val: r.num}
+    ];
+    document.getElementById('rBreakdown').innerHTML = pills.map(function(b){
+        return '<span class="bd_pill">' + b.icon + ' ' + b.label+ '<strong>'+ b.val.toLocaleString('fr-FR') + ' kg</strong></span>';
+    }).join('');
+}
