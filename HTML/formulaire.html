@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Ecostat</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/formulaire.css">
     <script src="../js/footer_header/header.js" defer></script>
     <script src="../js/footer_header/footer.js" defer></script>
     <script src="../js/pages/formulaire.js" defer></script>
@@ -57,15 +58,23 @@
             <div class="question">
                 <label>Mode de chauffage principal</label>
                 <div class="tile_group" id="tg_chauffage">
-                    <label><input type="radio" name="chauffage" value="gaz"><span class="tile_icone"></span>Gaz</label>
+                    <label><input type="radio" name="chauffage" value="gaz"><span class="tile_icon"></span>Gaz</label>
                     <label><input type="radio" name="chauffage" value="electricite"><span
-                            class="tile_icone"></span>Electricité</label>
+                            class="tile_icon"></span>Electricité</label>
                     <label><input type="radio" name="chauffage" value="fioul"><span
-                            class="tile_icone"></span>Fioul</label>
+                            class="tile_icon"></span>Fioul</label>
                     <label><input type="radio" name="chauffage" value="bois"><span
-                            class="tile_icone"></span>Bois</label>
-                    <label><input type="radio" name="chauffage" value="pompe"><span class="tile_icone"></span>Pompe à
+                            class="tile_icon"></span>Bois</label>
+                    <label><input type="radio" name="chauffage" value="pompe"><span class="tile_icon"></span>Pompe à
                         chaleur</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Personnes dans le foyer</label>
+                <div class="range_wrap">
+                    <input type="range" id="nbPersonnes" min="1" max="8" value="2" step="1">
+                    <span class="range_val" id="nbPersonnesVal">2</span>
                 </div>
             </div>
 
@@ -81,17 +90,25 @@
             </div>
         </div>
 
-        <div class="section_card">
+        <div class="section_card" id="transport_dv">
             <h2>Transport</h2>
 
             <div class="question">
-                <label>Mpde de transport principal au quotidien</label>
+                <label>Mode de transport principal au quotidien</label>
                 <div class="tile_group" id="tg_transport">
-                    <label><input type="radio" name="transport" value="voiture_essencec">Voiture essence</label>
+                    <label><input type="radio" name="transport" value="voiture_essence">Voiture essence</label>
                     <label><input type="radio" name="transport" value="voiture_diesel">Voiture diesel</label>
                     <label><input type="radio" name="transport" value="voiture_electrique">Voiture électrique</label>
                     <label><input type="radio" name="transport" value="transport_commun">Transport en commun</label>
                     <label><input type="radio" name="transport" value="velo">Vélo / marche</label>
+                </div>
+            </div>
+
+            <div class="question" id="q_km">
+                <label>Distance parcourue par semaine <span class="hint">(km)</span></label>
+                <div class="range_wrap">
+                    <input type="range" id="kmSemaine" min="0" max="800" value="150" step="10">
+                    <span class="range_val" id="kmSemaineVal">150 km</span>
                 </div>
             </div>
 
@@ -117,7 +134,7 @@
             </div>
         </div>
 
-        <div class="section_card">
+        <div class="section_card" id="alimentation_dv">
             <h2>Alimentation</h2>
 
             <div class="question">
@@ -150,7 +167,7 @@
             </div>
         </div>
 
-        <div class="section_card">
+        <div class="section_card" id="numerique_dv">
             <h2>Numérique</h2>
             <div class="question">
                 <label>Appareils numériques achetés neufs ces 12 derniers mois</label>
@@ -172,6 +189,7 @@
     </div>
 
     <div id="footer_dv"></div>
+    <div id="toast"></div>
 </body>
 
 </html>

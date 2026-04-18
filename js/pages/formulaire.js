@@ -1,5 +1,5 @@
 const FACTORS = {
-    logement: { appart_recent: 800, appart_ancien: 1600, maison_recente: 1400, maison_ancienne: 2800 },
+    logement: { appart_recent: 800, appart_ancien: 1600, maison_recent: 1400, maison_ancienne: 2800 },
     chauffage: { gaz: 2000, electricite: 400, fioul: 3500, bois: 300, pompe: 200 },
     conso_elec: (kwh) => kwh * 0.057,
     transport: { voiture_essence: 3200, voiture_diesel: 2900, voiture_electrique: 800, transport_commun: 200, velo: 0 },
@@ -29,7 +29,7 @@ function calcCO2(){
 
     var logType = getRadio('logType');
     var chauffage = getRadio('chauffage');
-    var nbPers = parseInt(document.getElementById('nbPersonne').value) || 2;
+    var nbPers = parseInt(document.getElementById('nbPersonnes').value) || 2;
     var consoElec = getSel('conso_elec');
     
     if(logType) logement += FACTORS.logement[logType] || 0;
@@ -127,7 +127,7 @@ function initRange(id, valId, fmt){
     refresh();
 }
 
-function shwoToast(msg, duration){
+function showToast(msg, duration){
     var t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
@@ -144,6 +144,7 @@ function getPrefix(){
 }
 
 async function submitResults(){
+
     var r = calcCO2();
     var p = getPrefix();
     var authData = { connected: false };
@@ -152,7 +153,7 @@ async function submitResults(){
         authData =await authRes.json();
     } catch(e) {}
 
-    var msp = document.getElementById('submitMsg');
+    var msg = document.getElementById('submitMsg');
     msg.style.display = 'block';
 
     if(authData.connected){
@@ -166,28 +167,28 @@ async function submitResults(){
             var res = await fetch(p + 'php/page/save_co2.php', { method: 'POST', body: body });
             var data = await res.json();
             if(data.success){
-                shwoToast('Données enregistrées sur votre compte.');
+                showToast('Données enregistrées sur votre compte.');
                 msg.style.color = 'green';
                 msg.textContent = 'Résultat enregistré : '+ r.total.toLocaleString('fr-FR') + ' kg CO2/an ajouté à votre profil.';
             } else{
-                shwoToast('Erreur lors de l\'enregistrement.');
+                showToast('Erreur lors de l\'enregistrement.');
                 msg.style.color = 'red';
                 msg.textContent = 'Erreur lors de l\'enregistrement. Veuillez réessayer.';
             }
         }catch(e){
-            shwoToast('Impossible de contacter le serveur');
+            showToast('Impossible de contacter le serveur');
             msg.style.color = 'red';
             msg.textContent = 'Impossible de contacter le serveur.';
         }
     } else{
-        shwoToast('Votre empreinte : ' + r.total.toLocaleString('fr-FR') + ' kg CO2/an');
-        msg.style.color = 'muted';
-        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<a href="' + p + 'html/login.html" style="color:green;font-weight:700;">Connectez-vous</a>' + ' pour sauvegrader vos résultats sur votre profil.';
+        showToast('Votre empreinte : ' + r.total.toLocaleString('fr-FR') + ' kg CO2/an');
+        msg.style.color = 'gray';
+        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<a href="/mael/' + p + 'html/login.html" style="color:green;font-weight:700;">Connectez-vous</a>' + ' pour sauvegrader vos résultats sur votre profil.';
     }
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    initRange('nbPersonnes','nbPersonnesVal', function(v){returnv;});
+    initRange('nbPersonnes','nbPersonnesVal', function(v){return v;});
     initRange('kmSemaine', 'kmSemaineVal', function(v){return v + ' km';});
 
     document.querySelectorAll('input[type="radio"], select').forEach(function(el){
@@ -201,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     document.getElementById('btnSubmit').addEventListener('click', submitResults);
 
-    updateUI;
+    updateUI();
     updateProgress();
     toggleKm();
 })
