@@ -15,7 +15,7 @@ function header_page(){ //suppriemr les mael pour version final
         .then(response => response.json())
         .then(data => {
             let ht = `<a href="mael/${p}index.html"><h1 class="titre_header">Accueil</h1></a>`;
-            ht += `<a href="mael/${p}html/page1.html"><h1 class="titre_header">Page 1</h1></a>`;
+            ht += `<a href="mael/${p}html/formulaire.html"><h1 class="titre_header">Formulaire</h1></a>`;
             
             // afficher le menu selon l'etat de connexion
             if(data.connected){
@@ -31,7 +31,7 @@ function header_page(){ //suppriemr les mael pour version final
             console.error("Erreur lors de la vérification de connexion:", error);
             // Menu par défaut en cas d'erreur
             let ht = `<a href="mael/${p}index.html"><h1 class="titre_header">Accueil</h1></a>`;
-            ht += `<a href="mael/${p}html/page1.html"><h1 class="titre_header">Page 1</h1></a>`;
+            ht += `<a href="mael/${p}html/formulaire.html"><h1 class="titre_header">Formulaire</h1></a>`;
             ht += `<a href="mael/${p}html/login.html"><h1 class="titre_header">Se connecter</h1></a>`;
             div_he.innerHTML = ht;
         });
