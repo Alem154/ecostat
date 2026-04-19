@@ -9,10 +9,10 @@ if(isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])){
     $t = connect($conn, $_POST["usernameLogin"], $_POST["passwordLogin"]);
     if($t["correct"]){
         $_SESSION["user"] = $t["id"];
-        header("Location: /mael/html/profile.html");
+        header("Location: /html/profile.html");
         exit();
     }else{
-        header("Location: /mael/html/login.html?error=identifiants");
+        header("Location: /html/login.html?error=identifiants");
         exit();
     }
 }
@@ -20,7 +20,7 @@ if(isset($_POST["usernameLogin"]) && isset($_POST["passwordLogin"])){
 //Inscription
 if(isset($_POST["usernameSignup"]) && isset($_POST["passwordSignup"]) && isset($_POST["emailSignup"])){
     if(empty(trim($_POST["usernameSignup"])) || empty(trim($_POST["passwordSignup"])) || empty(trim($_POST["emailSignup"]))){
-        header("Location: /mael/html/login.html?error=champsVides");
+        header("Location: /html/login.html?error=champsVides");
         exit();
     }
     $usernameSignup = $_POST["usernameSignup"];
@@ -37,20 +37,20 @@ if(isset($_POST["usernameSignup"]) && isset($_POST["passwordSignup"]) && isset($
     $pseudoExists = mysqli_num_rows($checkPseudoRet) > 0;
     
     if($emailExists){
-        header("Location: /mael/html/login.html?error=email");
+        header("Location: /html/login.html?error=email");
         exit();
     } else if($pseudoExists){
-        header("Location: /mael/html/login.html?error=pseudo");
+        header("Location: /html/login.html?error=pseudo");
         exit();
     } else {
         createUser($conn, $usernameSignup, $emailSignup, $_POST["passwordSignup"]);
         $t = connect($conn, $usernameSignup, $_POST["passwordSignup"]);
         if($t["correct"]){
             $_SESSION["user"] = $t["id"];
-            header("Location: /mael/html/profile.html");
+            header("Location: /html/profile.html");
             exit();
         }else{
-            header("Location: /mael/html/login.html?error=creation");
+            header("Location: /html/login.html?error=creation");
             exit();
         }
     }

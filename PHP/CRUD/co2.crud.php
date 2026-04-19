@@ -1,7 +1,7 @@
 <?php
 
-function createData($conn, $id_user, $transport, $alimentaire, $logement){
-    $sql = "INSERT INTO `donnee_carbone`(`id_utilisateur`,`transport`,`alimentaire`,`logement`) VALUES ('$id_user', '$transport', '$alimentaire', '$logement')";
+function createData($conn, $id_user, $transport, $alimentaire, $logement, $numerique){
+    $sql = "INSERT INTO `donnee_carbone`(`id_utilisateur`,`transport`,`alimentaire`,`logement`,`numerique`) VALUES ('$id_user', '$transport', '$alimentaire', '$logement', '$numerique')";
     $ret = mysqli_query($conn, $sql);
     if(!$ret){
         return "Error: " . mysqli_error($conn);
@@ -9,8 +9,8 @@ function createData($conn, $id_user, $transport, $alimentaire, $logement){
     return $ret;
 }
 
-function updateData($conn, $id, $transport, $alimentaire, $logement){
-    $sql = "UPDATE `donnee_carbone` SET `transport`='$transport', `alimentaire`='$alimentaire', `logement`='$logement' WHERE `id`=$id";
+function updateData($conn, $id, $transport, $alimentaire, $logement, $numerique){
+    $sql = "UPDATE `donnee_carbone` SET `transport`='$transport', `alimentaire`='$alimentaire', `logement`='$logement', `numerique`='$numerique' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
     if(!$ret){
         return "Error: " . mysqli_error($conn);

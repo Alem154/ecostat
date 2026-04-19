@@ -15,6 +15,7 @@ $id_user = intval($_POST["id_user"] ?? 0);
 $transport = intval($_POST["transport"] ?? 0);
 $alimentaire = intval($_POST["alimentaire"] ?? 0);
 $logement = intval($_POST["logement"] ?? 0);
+$numerique = intval($_POST["numerique"] ??0);
 
 if($id_user <= 0){
     echo json_encode(["success" => false, "error" => "Utilisateur invalide"]);
@@ -26,7 +27,7 @@ if($_SESSION["user"] != $id_user){
     exit;
 }
 
-$result = createData($conn, $id_user, $transport, $alimentaire, $logement);
+$result = createData($conn, $id_user, $transport, $alimentaire, $logement, $numerique);
 
 if($result === true || $result){
     echo json_encode(["success" => true]);

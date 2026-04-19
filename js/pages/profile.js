@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Récupere les infos de l'user
-    fetch("/mael/php/page/get_profile.php")
+    fetch("/php/page/get_profile.php")
         .then(response => response.json())
         .then(data => {
             if(data.error){
                 // Redirection si non connecter
-                window.location.href = "/mael/html/login.html";
+                window.location.href = "/html/login.html";
                 return;
             }
             
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Erreur:", error);
-            window.location.href = "/mael/html/login.html";
+            window.location.href = "/html/login.html";
         });
 
     // Gérer le formulaire de mdp
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             // Requête au serveur
-            fetch("/mael/php/page/change_password.php", {
+            fetch("/php/page/change_password.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

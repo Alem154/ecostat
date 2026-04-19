@@ -12,6 +12,9 @@ const FACTORS = {
     digital: (n) => n * 300,
 };
 
+var sliderPersonnesTouche = false;
+var sliderKmTouche = false;
+
 function getRadio(name){
     const el = document.querySelector('[name="'+ name +'"]:checked');
     return el ? el.value : null;
@@ -80,7 +83,7 @@ function updateUI(){
         { icon:'', label:'Logement', val: r.logement},
         { icon:'', label:'Transport', val: r.transport},
         { icon:'', label:'Alimentation', val: r.alim},
-        {icon:'', label:'Numérique', val: r.num}
+        {icon:'', label:'Numerique', val: r.num}
     ];
     document.getElementById('rBreakdown').innerHTML = pills.map(function(b){
         return '<span class="bd_pill">' + b.icon + ' ' + b.label+ '<strong>'+ b.val.toLocaleString('fr-FR') + ' kg</strong></span>';
@@ -93,7 +96,8 @@ function updateProgress(){
     var count = 0;
     fields.forEach(function(f) { if (document.querySelector('[name="'+f+'"]:checked')) count++;});
     selects.forEach(function(id) { var el = document.getElementById(id); if(el && el.value) count++;});
-    count += 2;
+    if(sliderPersonnesTouche) count++;
+    if(sliderKmTouche) count++;
     count = Math.min(count, 12);
     var pct = Math.round(count / 12 * 100);
     document.getElementById('progressFill').style.width = pct + '%';
@@ -123,7 +127,11 @@ function initRange(id, valId, fmt){
         var pct = (inp.value - inp.min) / (inp.max - inp.min) * 100;
         inp.style.setProperty('--pct', pct + '%'); // cf prblm
     }
-    inp.addEventListener('input', function(){refresh();updateUI();updateProgress();});
+    inp.addEventListener('input', function(){
+        if(id == 'nbPersonnes') sliderPersonnesTouche = true;
+        if(id == 'kmSemaine') sliderKmTouche = true;
+        refresh();updateUI();updateProgress();
+    });
     refresh();
 }
 
@@ -162,7 +170,8 @@ async function submitResults(){
                 id_user: authData.id,
                 transport: r.transport,
                 alimentaire: r.alim,
-                logement: r.logement
+                logement: r.logement,
+                numerique: r.num
             });
             var res = await fetch(p + 'php/page/save_co2.php', { method: 'POST', body: body });
             var data = await res.json();
@@ -183,7 +192,7 @@ async function submitResults(){
     } else{
         showToast('Votre empreinte : ' + r.total.toLocaleString('fr-FR') + ' kg CO2/an');
         msg.style.color = 'gray';
-        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<a href="/mael/' + p + 'html/login.html" style="color:green;font-weight:700;">Connectez-vous</a>' + ' pour sauvegrader vos résultats sur votre profil.';
+        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<a href="' + p + 'html/login.html" style="color:green;font-weight:700;">Connectez-vous</a>' + ' pour sauvegrader vos résultats sur votre profil.';
     }
 }
 

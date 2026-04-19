@@ -109,9 +109,17 @@ a{
 {
    width: 100%; 
    padding: 8px;
-   border: 1px solid white;
+   border: 1px solid #ccc;
    border-radius: 4px;
    box-sizing: border-box;
+   outline-color: #49CCC3;
+}
+
+#old_mdp:focus,
+#new_mdp:focus,
+#confirm_mdp:focus {
+   border-color: #49CCC3;
+   box-shadow: 0 0 0 2px rgba(73, 204, 195, 0.25);
 }
 
 #mdp_mess{
