@@ -1,8 +1,8 @@
 function genGraph(){
    const bal = document.getElementById("graphe");
-   jours = 0; /** nb de jours depuis l'inscription, à récupérer pour chaque utilisateur*/
+   jours = 1; /** nb de jours depuis l'inscription, à récupérer pour chaque utilisateur*/
    total = 0; /** nb total de la valeur pour la courbe (à incrémenter) (temporaire) */
-   tab = '<h2 class="titre">Votre Profil</h2>';
+   tab = '<h2 class="titre">Vos résultats</h2>';
    tab += '<table class="charts-css line multiple show-labels show-primary-axis">';
 
    for(i = 0; i < jours; i++){
