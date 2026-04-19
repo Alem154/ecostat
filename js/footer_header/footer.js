@@ -11,6 +11,7 @@ function footer_page(){
     const p = getRelativePrefix();
     let ft= `<a href="/${p}html/apropos.html"><h3 class="titre_header"> A propos</h3></a>`; // mettre votre nom au lieu du mieux (mael) si aucun lien en marche
     ft += `<a href="/${p}html/contact.html"><h3 class="titre_header">Nous contacter</h3></a>`;
+
     div_fo.innerHTML = ft;
 }
 
