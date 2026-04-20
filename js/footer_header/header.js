@@ -21,6 +21,38 @@ function header_page(){ //suppriemr les  pour version final
             if(data.connected){
                 ht += `<a href="${p}html/profile.html"><h1 class="titre_header">Profil</h1></a>`;
                 ht += `<a href="${p}php/page/logout.php"><h1 class="titre_header">Déconnexion</h1></a>`;
+                var pending = sessionStorage.getItem('pending_co2');
+                if(pending){
+                    sessionStorage.removeItem('pending_co2');
+                    var co2 = JSON.parse(pending);
+                    console.log('CO2 en attente détecté :', co2);
+                    console.log('User ID reçu :', data.id);
+                    var body = new URLSearchParams({
+                        id_user: data.id,
+                        transport: co2.transport,
+                        alimentaire: co2.alimentaire,
+                        logement: co2.logement
+                    });
+                    fetch(`${p}php/page/save_co2.php`, { method: 'POST', body: body })
+                        .then(res =>{
+                            if(!res.ok)throw new Error(`Erreur HTTP : ${res.status}`);
+                            return res.json();
+                        })
+                        .then(result =>{
+                            console.log('Réponse save_co2 :', result);
+                            if(result.success){
+                                var toast = document.getElementById('toast');
+                                if(toast){
+                                    toast.textContent = 'Votre empreinte CO2 a été sauvegardée !';
+                                    toast.classList.add('show');
+                                    setTimeout(function(){ toast.classList.remove('show'); }, 4000);
+                                }
+                            }
+                        })
+                        .catch(error =>{
+                            console.error("Erreur lors de l'envoie des données CO2 :", error);
+                        });
+                }
             } else {
                 ht += `<a href="${p}html/login.html"><h1 class="titre_header">Se connecter</h1></a>`;
             }

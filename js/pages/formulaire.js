@@ -70,6 +70,7 @@ function updateUI(){
     var r = calcCO2();
     var MAX = 20000;
     document.getElementById('rTotal').textContent = r.total.toLocaleString('fr-FR');
+    document.getElementById('rBar').style.width = Math.min(r.total / MAX * 100, 100) + '%';
 
     var compare = '';
     if(r.total < 4000) compare = 'Bien en dessous de la moyenne francaise (~10 t/an)';
@@ -86,7 +87,7 @@ function updateUI(){
         {icon:'', label:'Numerique', val: r.num}
     ];
     document.getElementById('rBreakdown').innerHTML = pills.map(function(b){
-        return '<span class="bd_pill">' + b.icon + ' ' + b.label+ '<strong>'+ b.val.toLocaleString('fr-FR') + ' kg</strong></span>';
+        return '<span class="bd_pill">' + b.icon + ' ' + b.label+ '<strong>'+ ' '+ b.val.toLocaleString('fr-FR') + ' kg</strong></span>';
     }).join('');
 }
 
@@ -190,9 +191,15 @@ async function submitResults(){
             msg.textContent = 'Impossible de contacter le serveur.';
         }
     } else{
+        sessionStorage.setItem('pending_co2', JSON.stringify({
+            transport: r.transport,
+            alimentaire: r.alim,
+            logement: r.logement,
+            total: r.total
+        }))
         showToast('Votre empreinte : ' + r.total.toLocaleString('fr-FR') + ' kg CO2/an');
         msg.style.color = 'gray';
-        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<a href="' + p + 'html/login.html" style="color:green;font-weight:700;">Connectez-vous</a>' + ' pour sauvegrader vos résultats sur votre profil.';
+        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<button onclick="window.location.href=\'' + p + 'html/login.html\'" '+'style="margin-top:.8rem;padding:.6rem 1.4rem;background:green;color:#fff;border:none;border-radius:99px;cursor:pointer;font-weight:700;font-size:.9rem;">'+'Connectez-vous pour sauvegrader vos résultats sur votre profil.</button>';
     }
 }
 

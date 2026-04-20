@@ -24,3 +24,8 @@ reponse en fin de questionnaire en fonction des habitude => donner des conseils
 
 système de graphe dans la page du compte sur le long terme en fonction des reponses des questionnaires 
 
+TODO/////////////////
+Commenter le code
+Documentation utilisateur
+Documentation développeur
+
