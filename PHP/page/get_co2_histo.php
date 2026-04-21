@@ -24,7 +24,7 @@ foreach ($donnee as $ligne) {
         + intval($ligne["numerique"]);
 
 
-    $resultat[] = [
+    $result[] = [
         "date" => $ligne["date_saisie"],
         "total" => $total,
         "transport" => intval($ligne["transport"]),
@@ -34,6 +34,6 @@ foreach ($donnee as $ligne) {
     ];
 }
 
-echo json_encode($resultat);
+echo json_encode($resul);
 
 ?>
