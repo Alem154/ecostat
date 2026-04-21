@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Profil - Ecostat</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/charts.css-1.2.0/dist/charts.min.css">
     <script src="../js/footer_header/header.js" defer></script>
     <script src="../js/footer_header/footer.js" defer></script>
     <script src="../js/pages/profile.js" defer></script>
@@ -20,6 +21,26 @@
          <a href="/php/page/logout.php" onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');" id="l_deco">
             Déconnexion
          </a>
+      </div>
+
+      <h3 class="titre" style="margin-top: 40px;">Votre évolution CO2</h3>
+      <div id="dv_graphe">
+         <p id="graphe_chargement">Chargement du graphe...</p>
+         <div id="graphe_container" style="display:none;">
+            <div id="graphe_legende" style="margin-bottom: 12px; font-size: 0.9rem; color: #555;"></div>
+            <div class="charts-css-wrapper" style="overflow-x: auto;">
+               <table id="graphe_co2" class="charts-css line show-labels show-primary-axis show-data-axes" style="height: 250px; max-width: 100%;">
+                  <thead>
+                     <tr><th scope="col">Date</th><th scope="col">Co2 total (kg)</th></tr>
+                  </thead>
+                  <tbody id="graphe_body">
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <p id="graphe_vide" style="display: none; color: #888;">
+            Aucune donnée pour l'instant. Remplissez le questionnaire pour voir votre évolutions.
+         </p>
       </div>
 
       <h3 class="titre" style="margin-top: 40px;">Changer votre mot de passe</h3>
