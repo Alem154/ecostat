@@ -1,5 +1,5 @@
 <?php
-
+// Création de donnée
 function createData($conn, $id_user, $transport, $alimentaire, $logement, $numerique){
     $sql = "INSERT INTO `donnee_carbone`(`id_utilisateur`,`transport`,`alimentaire`,`logement`,`numerique`) VALUES ('$id_user', '$transport', '$alimentaire', '$logement', '$numerique')";
     $ret = mysqli_query($conn, $sql);
@@ -9,6 +9,7 @@ function createData($conn, $id_user, $transport, $alimentaire, $logement, $numer
     return $ret;
 }
 
+// Mise a jour des données
 function updateData($conn, $id, $transport, $alimentaire, $logement, $numerique){
     $sql = "UPDATE `donnee_carbone` SET `transport`='$transport', `alimentaire`='$alimentaire', `logement`='$logement', `numerique`='$numerique' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
@@ -18,6 +19,7 @@ function updateData($conn, $id, $transport, $alimentaire, $logement, $numerique)
     return $ret;
 }
 
+// Suppression de donnée
 function deleteData($conn,$id){
     $sql = "DELETE FROM `donnee_carbone` WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
@@ -27,6 +29,7 @@ function deleteData($conn,$id){
     return $ret;
 }
 
+// Selection des données
 function selectData($conn, $id){
     $sql = "SELECT * FROM `donnee_carbone` WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
@@ -37,6 +40,7 @@ function selectData($conn, $id){
     }
 }
 
+// Selection des données en fonction de l'auteur de celle-ci
 function selectDataByUser($conn, $id_user){
     $sql = "SELECT * FROM `donnee_carbone` WHERE `id_utilisateur`=$id_user";
     $ret = mysqli_query($conn, $sql);

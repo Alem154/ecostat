@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
+// Charge le graphe sur la page profil a partir des données sauvegarder
 function chargerGraphe() {
     fetch("/php/page/get_co2_histo.php")
         .then(response => response.json())

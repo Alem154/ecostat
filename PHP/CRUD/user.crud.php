@@ -1,5 +1,5 @@
 <?php
-
+// Création d'un utilisateur
 function createUser($conn, $pseudo, $mail, $mdp){
     $hashMdp = hash("sha256", $mdp);
     $sql = "INSERT INTO `utilisateurs`(`pseudo`, `email`, `mdp`) VALUES ('$pseudo', '$mail', '$hashMdp')";
@@ -10,6 +10,7 @@ function createUser($conn, $pseudo, $mail, $mdp){
     return $ret;
 }
 
+// Mise a jour du profil d'utilisateur
 function updateUser($conn, $id, $pseudo, $mail, $mdp){
     $sql = "UPDATE `utilisateurs` SET `pseudo`='$pseudo', `email`='$mail', `mdp`='$mdp' WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
@@ -19,7 +20,9 @@ function updateUser($conn, $id, $pseudo, $mail, $mdp){
     return $ret;
 }
 
+// Suppression d'un utilisateur
 function deleteUser($conn, $id){
+    
     $sql = "DELETE FROM `utilisateurs` WHERE `id`=$id";
     $ret = mysqli_query($conn, $sql);
     if($ret){
@@ -29,7 +32,7 @@ function deleteUser($conn, $id){
     }
 }
 
-# regarde si c'est un mail ou non l'identifien utiliser
+// Regarde si l'email contient bien le "@"
 function loginSource($login){
     $res = false;
     for($i=0;$i<strlen($login);$i++){
@@ -40,6 +43,8 @@ function loginSource($login){
     return $res;
 }
 
+
+// Connecte l'utilisateur
 function connect(mysqli $conn, string $login, string $mdp): array {
     $hashMdp = hash("sha256", $mdp);
     if(loginSource($login)){
@@ -67,6 +72,7 @@ function connect(mysqli $conn, string $login, string $mdp): array {
     return $res;
 }
 
+// Selectionner un utilisateur par son id
 function getUserById($conn, $id){
     $query = "SELECT `id`, `pseudo`, `email` FROM `utilisateurs` WHERE `id`=$id";
     $ret = mysqli_query($conn, $query);

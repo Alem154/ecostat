@@ -5,7 +5,8 @@ function getRelativePrefix(){// fonction qui ajoute le préfixe ../ en fonction 
     return '../'.repeat(depth);
 }
 
-function header_page(){ //suppriemr les  pour version final
+// Gestion du header de la page
+function header_page(){
     const div_he = document.getElementById("header_dv");
     if(!div_he) return;
     const p = getRelativePrefix();

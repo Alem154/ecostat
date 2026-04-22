@@ -15,16 +15,19 @@ const FACTORS = {
 var sliderPersonnesTouche = false;
 var sliderKmTouche = false;
 
+// Récupération valeur bouton radio
 function getRadio(name){
     const el = document.querySelector('[name="'+ name +'"]:checked');
     return el ? el.value : null;
 }
 
+// Récupération champ HTML
 function getSel(id){
     const el = document.getElementById(id);
     return el && el.value ? el.value : null;
 }
 
+// calule la quantité de co2 produite
 function calcCO2(){
     let logement = 0;
     let transport = 0;
@@ -66,6 +69,7 @@ function calcCO2(){
     return { total: total, logement: Math.round(logement), transport: Math.round(transport), alim: Math.round(alim), num: Math.round(num)};
 }
 
+// Mise a jour de l'interface graphique
 function updateUI(){
     var r = calcCO2();
     var MAX = 20000;
@@ -79,7 +83,6 @@ function updateUI(){
     else if(r.total < 15000) compare = 'Au-dessus de la moyenne francaise (~10 t/an)';
     else compare = 'Très au-dessus de la moyenne francaise (~10 t/an)';
     document.getElementById('rCompare').textContent = compare;
-// a completer
     var pills = [
         { icon:'', label:'Logement', val: r.logement},
         { icon:'', label:'Transport', val: r.transport},
@@ -91,6 +94,7 @@ function updateUI(){
     }).join('');
 }
 
+//Mise a jour de la barre de progression
 function updateProgress(){
     var fields = ['logType','chauffage','transport','vols_long','regime','local','gaspillage','digital'];
     var selects = ['conso_elec', 'vols_court'];
@@ -105,12 +109,14 @@ function updateProgress(){
     document.getElementById('progressLabel').textContent = count + ' / 12 réponses';
 }
 
+// Affiche ou masque la question sur les km
 function toggleKm(){
     var transp = document.querySelector('[name="transport"]:checked');
     var qKm = document.getElementById('q_km');
     qKm.style.display = (transp && transp.value !== 'velo') ? 'block' : 'none';
 }
 
+// Mise a jour de l'apparence des tuiles (bouton)
 function updateTileGroups(){
     document.querySelectorAll('.tile_group').forEach(function(grp){
         grp.querySelectorAll('label').forEach(function(lbl){
@@ -120,6 +126,7 @@ function updateTileGroups(){
     });
 }
 
+// Mise a jour du slider
 function initRange(id, valId, fmt){
     var inp = document.getElementById(id);
     var val = document.getElementById(valId);
@@ -136,6 +143,7 @@ function initRange(id, valId, fmt){
     refresh();
 }
 
+//Message temporaire
 function showToast(msg, duration){
     var t = document.getElementById('toast');
     t.textContent = msg;
@@ -143,6 +151,7 @@ function showToast(msg, duration){
     setTimeout(function() { t.classList.remove('show');}, duration || 3500);
 }
 
+// Gestion du préfix du chemin
 function getPrefix(){
     var path = window.location.pathname;
     var parts = path.split('/').filter(Boolean);
@@ -152,6 +161,7 @@ function getPrefix(){
     return prefix;
 }
 
+// Soumission des résultat du from au serveur (ou stockage)
 async function submitResults(){
 
     var r = calcCO2();

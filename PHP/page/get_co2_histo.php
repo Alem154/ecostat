@@ -2,6 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
+
 if (!isset($_SESSION["user"])) {
     echo json_encode(["error" => "Non connecté"]);
     exit();
@@ -10,19 +11,21 @@ if (!isset($_SESSION["user"])) {
 require_once __DIR__ . "/../db/db_connect.php";
 require_once __DIR__ . "/../CRUD/co2.crud.php";
 
+// recupération des données
 $donnee = selectDataByUser($conn, $_SESSION["user"]);
 if (!$donnee) {
     echo json_encode([]);
     exit();
 }
 
+
+// Traitement des données
 $result = [];
 foreach ($donnee as $ligne) {
     $total = intval($ligne["transport"])
         + intval($ligne["alimentaire"])
         + intval($ligne["logement"])
         + intval($ligne["numerique"]);
-
 
     $result[] = [
         "date" => $ligne["date_saisie"],

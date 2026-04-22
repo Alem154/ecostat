@@ -5,6 +5,7 @@ function getRelativePrefix(){ // fonction qui ajoute le préfixe ../ en fonction
     return '../'.repeat(depth);
 }
 
+// gestion du footer de la page
 function footer_page(){
     const div_fo = document.getElementById("footer_dv");
     if(!div_fo)return;

@@ -5,7 +5,7 @@ require_once __DIR__."/../CRUD/user.crud.php";
 
 header('Content-Type: application/json');
 
-// Connecter ?
+// Bloquer accès si l'utilisateur n'es pas connecté
 if(!isset($_SESSION["user"])){
     echo json_encode(["error" => "Non connecté"]);
     exit();
@@ -14,12 +14,13 @@ if(!isset($_SESSION["user"])){
 // Donnee POST
 $data = json_decode(file_get_contents("php://input"), true);
 
+// verification des champs obligatoire
 if(!isset($data["oldPassword"]) || !isset($data["newPassword"])){
     echo json_encode(["error" => "Données manquantes"]);
     exit();
 }
 
-// Donnee User
+// verifie que l'utilisateur existe
 $user = getUserById($conn, $_SESSION["user"]);
 if(!$user){
     session_destroy();
@@ -27,7 +28,7 @@ if(!$user){
     exit();
 }
 
-// verifi mdp
+// verification de l'ancien mdp
 $hashOldMdp = hash("sha256", $data["oldPassword"]);
 $query = "SELECT `mdp` FROM `utilisateurs` WHERE `id`=" . $_SESSION["user"];
 $ret = mysqli_query($conn, $query);
@@ -44,7 +45,7 @@ if($data["newPassword"] !== $data["confirmPassword"]){
     exit();
 }
 
-// Update le mdp
+// Mise a jour du mdp
 $newHashMdp = hash("sha256", $data["newPassword"]);
 $updateQuery = "UPDATE `utilisateurs` SET `mdp`='$newHashMdp' WHERE `id`=" . $_SESSION["user"];
 $updateRet = mysqli_query($conn, $updateQuery);

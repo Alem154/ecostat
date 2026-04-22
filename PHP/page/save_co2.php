@@ -11,6 +11,7 @@ if(!isset($_SESSION["user"])){
     exit;
 }
 
+// Récuperation et validation des données POST
 $id_user = intval($_POST["id_user"] ?? 0);
 $transport = intval($_POST["transport"] ?? 0);
 $alimentaire = intval($_POST["alimentaire"] ?? 0);
@@ -27,6 +28,7 @@ if($_SESSION["user"] != $id_user){
     exit;
 }
 
+// Création des données CO2
 $result = createData($conn, $id_user, $transport, $alimentaire, $logement, $numerique);
 
 if($result === true || $result){
