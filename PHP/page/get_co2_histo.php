@@ -34,6 +34,6 @@ foreach ($donnee as $ligne) {
     ];
 }
 
-echo json_encode($resul);
+echo json_encode($result);
 
 ?>
