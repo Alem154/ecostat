@@ -195,11 +195,12 @@ async function submitResults(){
             transport: r.transport,
             alimentaire: r.alim,
             logement: r.logement,
+            numerique: r.num,
             total: r.total
         }))
         showToast('Votre empreinte : ' + r.total.toLocaleString('fr-FR') + ' kg CO2/an');
         msg.style.color = 'gray';
-        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<button onclick="window.location.href=\'' + p + 'html/login.html\'" '+'style="margin-top:.8rem;padding:.6rem 1.4rem;background:green;color:#fff;border:none;border-radius:99px;cursor:pointer;font-weight:700;font-size:.9rem;">'+'Connectez-vous pour sauvegrader vos résultats sur votre profil.</button>';
+        msg.innerHTML = 'Votre empreinte estimée : <strong>' + r.total.toLocaleString('fr-FR') + ' kg CO2/an</strong>.<br>' + '<button onclick="window.location.href=\'' + p + 'html/login.html\'" '+'style="margin-top:.8rem;padding:.6rem 1.4rem;background:green;color:#fff;border:none;border-radius:99px;cursor:pointer;font-weight:700;font-size:.9rem;">'+'Connectez-vous pour sauvegarder vos résultats sur votre profil.</button>';
     }
 }
 

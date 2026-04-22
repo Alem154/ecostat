@@ -31,7 +31,8 @@ function header_page(){ //suppriemr les  pour version final
                         id_user: data.id,
                         transport: co2.transport,
                         alimentaire: co2.alimentaire,
-                        logement: co2.logement
+                        logement: co2.logement,
+                        numerique: co2.numerique
                     });
                     fetch(`${p}php/page/save_co2.php`, { method: 'POST', body: body })
                         .then(res =>{
