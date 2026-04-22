@@ -23,7 +23,7 @@ Notre site vous permet d'estimer votre production de CO2 en fonction de vos habi
 ## Première utilisation
 
 ### Accéder au formulaire
-- Tout d'abord rendez-vous sur la page [Ecostat](https://ecostat.alwaysdata.net/html/formulaire.html)
+- Tout d'abord rendez-vous sur la page [Ecostat](https://ecostat.alwaysdata.net)
 - Cliquer sur le bouton formulaire
 
 ### Remplisser le formulaire
