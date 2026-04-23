@@ -1,7 +1,5 @@
 # Documentation développeur **Ecostat**
 
----
-
 **Version** : 1.0
 **Licence** : [MIT](https://github.com/Alem154/ecostat/blob/main/LICENSE)
 
@@ -18,8 +16,6 @@ L'application est développée en **HTML/CSS/JavaScript** pour le frontend et en
 
 ---
 
----
-
 ## Outils
 
 **Base de données** : MySQL
@@ -28,7 +24,6 @@ L'application est développée en **HTML/CSS/JavaScript** pour le frontend et en
 
 ---
 
----
 
 ## Structure du projet
 
@@ -45,9 +40,9 @@ L'application est développée en **HTML/CSS/JavaScript** pour le frontend et en
 
 *php* -> *CRUD* -> CRUD utilisateur et CRUD des données
 
-    -> *db* -> connection et déconnexion a la base de données
+   -> *db* -> connection et déconnexion a la base de données
 
-    -> *page* -> différentes fonction pour les pages
+   -> *page* -> différentes fonction pour les pages
 
 
 .env.exemple -> fichier exemple de .env
@@ -67,6 +62,8 @@ LICENSE -> Licence MIT
 
 README.md -> readme
 
+---
+
 ## Installation
 
 ### Prérequis
@@ -80,7 +77,8 @@ README.md -> readme
 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/Alem154/ecostat.git cd ecostat
+git clone https://github.com/Alem154/ecostat.git
+cd ecostat
 ```
 
 2. Configurer l'environnement
@@ -124,6 +122,7 @@ Placer le dossier ecostat dans le répertoire racine de votre serveur.
     date_saisie date curdate()
  );
  ```
+---
 
 ## Fonctionnalités principale
 
@@ -140,5 +139,7 @@ Placer le dossier ecostat dans le répertoire racine de votre serveur.
 ### Gestion des utilisateurs
  - Connexion
  - Création de compte
+
+---
 
 En cas de problème merci de nous contacter via *github*
