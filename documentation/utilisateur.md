@@ -23,21 +23,21 @@ Notre site vous permet d'estimer votre production de CO2 en fonction de vos habi
 ## Première utilisation
 
 ### Accéder au formulaire
-- Tout d'abord rendez-vous sur la page [Ecostat](https://ecostat.alwaysdata.net/html/formulaire.html)
+- Tout d'abord rendez-vous sur la page [Ecostat](https://ecostat.alwaysdata.net)
 - Cliquer sur le bouton formulaire
 
-### Remplisser le formulaire
-- Remplisser chaque case du formulaire
+### Remplir le formulaire
+- Remplir chaque case du formulaire
 - Pas d'inquiétude les informations sont des approximations pas besoin de connaître toute une quantité de données sur votre quotidien.
 
-### Consulter vos résultat
+### Consulter vos résultats
 - Envoyer le formulaire.
-- consulter ensuite votre résultat.
+- Consulter ensuite vos résultats.
 
-### Créer vous un compte
+### Créer un compte
 - Si l'expérience vous a plu et que vous n'avez pas de compte, pas de panique, vous pouvez sauvegarder ces données en cliquant en bas de la page pour vous créer un compte.
 - Si vous faites cela les données que vous venez de rentrer seront automatiquement sauvegardées.
 
 ---
 
-**Vous rencontrer un prblème technique ?** N'hésiter pas a nous contacter via github.
+**Vous rencontrez un problème technique ?** N'hésitez pas à nous contacter via github.
