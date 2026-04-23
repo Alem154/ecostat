@@ -71,9 +71,11 @@ Ajouter vos variable d'environnement a votre *.env*.
  ```CREATE DATABASE ecostat;```
  ``` USE ecostat;```
  2. Créer les tables nécessaire :
- ```CREATE TABLE users (
+ ```sql
+ CREATE TABLE users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         email VARCHAR(255),
         password VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );```
+    );
+```
