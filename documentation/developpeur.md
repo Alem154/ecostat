@@ -3,7 +3,7 @@
 
 **Version** : 1.0
 
-**Licence** : [MIT](https://github.com/Alem154/ecostat/blob/main/LICENSE)
+**Licence** : [MIT](https://github.com/Alem154/ecostat/blob/master/LICENSE)
 
 ---
 
