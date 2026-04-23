@@ -1,6 +1,8 @@
 # Documentation développeur **Ecostat**
 
+
 **Version** : 1.0
+
 **Licence** : [MIT](https://github.com/Alem154/ecostat/blob/main/LICENSE)
 
 ---
@@ -12,7 +14,9 @@ Le but de notre application est de permettre au utilisateur de :
 - **Mesurer** leur empreinte cabrone.
 - **Visualisé** l'évolution de leur empreinte carbone grace a leur profil.
 
-L'application est développée en **HTML/CSS/JavaScript** pour le frontend et en **PHP** pour le backend. Les fichiers de code sont trier par langage. Ce site utilise plusieur page html dans les qu'elles nous ajoutons les autres langage pour effectuer les différentes tâches.
+L'application est développée en **HTML/CSS/JavaScript** pour le frontend et en **PHP** pour le backend. 
+Les fichiers de code sont trier par langage. 
+Ce site utilise plusieur page html dans les qu'elles nous ajoutons les autres langage pour effectuer les différentes tâches.
 
 ---
 
