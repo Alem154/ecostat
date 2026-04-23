@@ -33,17 +33,38 @@ L'application est développée en **HTML/CSS/JavaScript** pour le frontend et en
 ## Structure du projet
 
 *css* -> Style du site + image
+
+
 *html* -> page html + ressource graphique
+
+
 *js* -> *footer_header* -> footer et header dinamique
+
    -> *pages* -> fonction des différentes pages
+
+
 *php* -> *CRUD* -> CRUD utilisateur et CRUD des données
+
     -> *db* -> connection et déconnexion a la base de données
+
     -> *page* -> différentes fonction pour les pages
+
+
 .env.exemple -> fichier exemple de .env
+
+
 .gitignore -> fichier ignorés par Git
+
+
 .htaccess -> Configuration web
+
+
 index.html -> Page d'acceuil
+
+
 LICENSE -> Licence MIT
+
+
 README.md -> readme
 
 ## Installation
