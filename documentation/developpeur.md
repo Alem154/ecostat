@@ -57,25 +57,67 @@ README.md -> readme
 ### Installation
 
 1. Cloner le dépôt
-```git clone https://github.com/Alem154/ecostat.git cd ecostat```
+
+```bash
+git clone https://github.com/Alem154/ecostat.git cd ecostat
+```
 
 2. Configurer l'environnement
-```cp .env.exemple .env```
+
+```bash
+cp .env.exemple .env
+```
+
 Ajouter vos variable d'environnement a votre *.env*.
 
 3. Configurer le serveur web
- - Placer le dossier ecostat dans le répertoire racine de votre serveur.
+
+Placer le dossier ecostat dans le répertoire racine de votre serveur.
 
 4. Configurer la base de données
- 1. Créer une base de données MySQL :
- ```CREATE DATABASE ecostat;```
- ``` USE ecostat;```
- 2. Créer les tables nécessaire :
+
+ - Créer une base de données MySQL :
+
+ ```sql
+ CREATE DATABASE ecostat;
+ USE ecostat;
+ ```
+
+ - Créer les tables nécessaire :
+
  ```sql
  CREATE TABLE users (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        email VARCHAR(255),
-        password VARCHAR(255),
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        id INT AUTO_INCREMENT,
+        pseudo VARCHAR(50),
+        email VARCHAR(100),
+        mdp VARCHAR(255)
     );
-```
+
+ CREATE TABLE carbon_footprints (
+    id INT AUTO_INCREMENT,
+    id_utilisateur INT,
+    transport INT,
+    alimentaire INT,
+    logement INT,
+    numerique INT,
+    date_saisie date curdate()
+ );
+ ```
+
+## Fonctionnalités principale
+
+### Calcul de l'empreinte carbone
+ - **Logement** : Calcul basé sur le type de logement, le type de chauffage...
+ - **Transport** : Calcul basé sur les transports utilisés et sur la distance parcourus.
+ - **Alimentaire** : Estimation des émitions en fonctions du régime alimentaire.
+ - **Numérique** : Calcul en fonction du nombre d'appareil acheté récemment.
+
+### Tableau de bord
+ - Historique
+ - Données du compte
+
+### Gestion des utilisateurs
+ - Connexion
+ - Création de compte
+
+En cas de problème merci de nous contacter via *github*
