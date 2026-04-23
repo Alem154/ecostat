@@ -1,4 +1,4 @@
-# Documentation utilisateur **Ecostat**
+# Documentation utilisateur **EcoStat**
 
 ---
 
