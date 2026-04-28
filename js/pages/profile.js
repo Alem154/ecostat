@@ -96,10 +96,12 @@ function chargerGraphe() {
 
             const valeurs = donnees.map(d => d.total);
             const max = Math.max(...valeurs);
+            const min = Math.min(...valeurs);
+            const range = max - min || 1;
             tbody.innerHTML = donnees.map((d, i) => {
                 const precedent = i === 0 ? 0 : donnees[i - 1].total;
-                const taille = max > 0 ? d.total / max : 0;
-                const depart = max > 0 ? precedent / max : 0;
+                const taille = (d.total - min) / range;
+                const depart = i === 0 ? 0 : (precedent - min) / range;
 
                 return `<tr>
                             <th scope="row">${d.date}</th>
